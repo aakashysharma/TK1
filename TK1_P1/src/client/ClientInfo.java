@@ -8,7 +8,7 @@ import java.util.Map;
 
 import server.ApplicationWindow;
 
-public class ClientInfo implements HuntClientInterface {
+public class ClientInfo implements HuntingClient {
 
 	private String playerName = "";
 

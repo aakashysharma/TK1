@@ -1,18 +1,18 @@
 /**
- * 
+ *
  */
 package server;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-import client.HuntClientInterface;
+import client.HuntingClient;
 
 public interface HuntingServer extends Remote {
-	String login(HuntClientInterface client) throws RemoteException;
+	boolean login(HuntingClient client) throws RemoteException;
 
-	void logout(HuntClientInterface client) throws RemoteException;
+	void logout(HuntingClient client) throws RemoteException;
 
-	void huntFly(HuntClientInterface client) throws RemoteException;
+	void huntFly(HuntingClient client) throws RemoteException;
 
 }

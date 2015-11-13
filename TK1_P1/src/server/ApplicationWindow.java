@@ -30,7 +30,7 @@ public class ApplicationWindow extends javax.swing.JPanel {
 
 	/**
 	 * Creates new form ApplicationWindow
-	 * 
+	 *
 	 * @throws InterruptedException
 	 */
 	public ApplicationWindow() {
@@ -65,6 +65,7 @@ public class ApplicationWindow extends javax.swing.JPanel {
 		flyImage.addMouseListener(mouseListener);
 
 		panel = new javax.swing.JPanel() {
+			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				// g.setColor(Color.red);
@@ -104,6 +105,7 @@ public class ApplicationWindow extends javax.swing.JPanel {
 
 		btnLogin.setText("Login");
 		btnLogin.addActionListener(new java.awt.event.ActionListener() {
+			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				btnLoginActionPerformed(evt);
 			}
@@ -113,6 +115,7 @@ public class ApplicationWindow extends javax.swing.JPanel {
 		btnLogout.setText("Logout");
 		btnLogout.setOpaque(false);
 		btnLogout.addActionListener(new java.awt.event.ActionListener() {
+			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				btnLogoutActionPerformed(evt);
 			}
@@ -125,10 +128,12 @@ public class ApplicationWindow extends javax.swing.JPanel {
 			Class[] types = new Class[] { java.lang.String.class, java.lang.Integer.class };
 			boolean[] canEdit = new boolean[] { false, false };
 
+			@Override
 			public Class getColumnClass(int columnIndex) {
 				return types[columnIndex];
 			}
 
+			@Override
 			public boolean isCellEditable(int rowIndex, int columnIndex) {
 				return canEdit[columnIndex];
 			}
@@ -223,8 +228,7 @@ public class ApplicationWindow extends javax.swing.JPanel {
 
 		} else {
 			clientInfo.setPlayerName(getUserName().trim());
-			String result = controller.login(this.clientInfo);
-			if (result.equals("success")) {
+			if (controller.login(this.clientInfo)) {
 				isLoggedIn = true;
 				enterNameLabel.setVisible(false);
 				userNameTextField.setVisible(false);
@@ -234,8 +238,10 @@ public class ApplicationWindow extends javax.swing.JPanel {
 				userNameLabel.setText(getUserName());
 				userNameLabel.setVisible(true);
 				btnLogout.setVisible(true);
-			} else
-				JOptionPane.showMessageDialog(null, result, null, JOptionPane.INFORMATION_MESSAGE);
+			} else {
+				JOptionPane.showMessageDialog(null, "Server not up and running or user already exists on server", null,
+						JOptionPane.INFORMATION_MESSAGE);
+			}
 
 		}
 	}
@@ -291,6 +297,7 @@ public class ApplicationWindow extends javax.swing.JPanel {
 	}
 
 	private MouseListener mouseListener = new MouseAdapter() {
+		@Override
 		public void mouseClicked(MouseEvent e) {
 			if (e.getButton() == MouseEvent.BUTTON1) {
 				huntFly();

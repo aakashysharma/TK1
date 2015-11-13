@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package client;
 
@@ -27,21 +27,18 @@ import impl.Controller;
 
 @SuppressWarnings("serial")
 public class ClientGUI extends JFrame {
-	JToolBar tb = null;
-	JButton btnLogin = null;
-	JButton btnLogOut = null;
-	JTextField tf = null;
-	JLabel lblLogin = null;
-	Controller controller = new Controller();
-	ClientInfo clientInfo = null;
+	private JToolBar toolbar = null;
+	private JButton btnLogin = null;
+	private JButton btnLogOut = null;
+	private JTextField textField = null;
+	private JLabel lblLogin = null;
+	private Controller controller = new Controller();
+	private ClientInfo clientInfo = null;
 
 	public ClientGUI() {
-		System.out.println("ClientGUI Constructor.....");
-
 		try {
 			clientInfo = new ClientInfo();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -64,6 +61,7 @@ public class ClientGUI extends JFrame {
 		eMenuItem.setMnemonic(KeyEvent.VK_E);
 		eMenuItem.setToolTipText("Exit application");
 		eMenuItem.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent event) {
 				System.exit(0);
 			}
@@ -79,21 +77,22 @@ public class ClientGUI extends JFrame {
 	}
 
 	private void initLoginComponent() {
-		JPanel p = new JPanel(new BorderLayout());
+		JPanel panel = new JPanel(new BorderLayout());
 
-		tb = new JToolBar();
-		tb.setFloatable(false);
-		p.add(tb, BorderLayout.PAGE_START);
+		toolbar = new JToolBar();
+		toolbar.setFloatable(false);
+		panel.add(toolbar, BorderLayout.PAGE_START);
 
 		lblLogin = new JLabel();
-		tf = new JTextField(15);
-		tb.add(tf);
-		tb.add(lblLogin);
-		tb.addSeparator();
+		textField = new JTextField(15);
+		toolbar.add(textField);
+		toolbar.add(lblLogin);
+		toolbar.addSeparator();
 
 		btnLogin = new JButton(" Login ");
-		tb.add(btnLogin);
+		toolbar.add(btnLogin);
 		btnLogin.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				login();
@@ -106,21 +105,22 @@ public class ClientGUI extends JFrame {
 		selectb.setBorder(new EmptyBorder(3, 0, 3, 0));
 		vertical.add(selectb);
 		add(vertical, BorderLayout.WEST);
-		add(p);
+		add(panel);
 	}
 
 	private boolean login() {
 
-		btnLogOut = new JButton("Log Out");
-		this.clientInfo.setPlayerName(tf.getText());
-		if (controller.login(this.clientInfo).equals("success")) {
-			tf.setVisible(false);
+		btnLogOut = new JButton("Logout");
+		this.clientInfo.setPlayerName(textField.getText());
+		if (controller.login(this.clientInfo)) {
+			textField.setVisible(false);
 			btnLogin.setVisible(false);
-			lblLogin.setText("Logged in  " + tf.getText());
+			lblLogin.setText("Logged in  " + textField.getText());
 			lblLogin.setVisible(true);
-			tb.add(btnLogOut);
+			toolbar.add(btnLogOut);
 
 			btnLogOut.addActionListener(new ActionListener() {
+				@Override
 				public void actionPerformed(ActionEvent e) {
 
 					logOut();
@@ -134,12 +134,12 @@ public class ClientGUI extends JFrame {
 
 	private void logOut() {
 		controller.logOut(this.clientInfo);
-		tf.setVisible(true);
+		textField.setVisible(true);
 		btnLogin.setVisible(true);
 
 		lblLogin.setVisible(false);
 		btnLogOut.setVisible(false);
-		tf.setText("");
+		textField.setText("");
 		lblLogin.setText("");
 
 	}

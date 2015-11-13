@@ -26,23 +26,19 @@ public class Controller {
 		return true;
 	}
 
-	public String login(ClientInfo client) {
-		String status;
+	public boolean login(ClientInfo client) {
+
 		try {
-
-			if (null != server) {
-				status = server.login(client);
-				System.out.println("Login Status --" + status);
-			} else {
-				status = "Server not connected..";
+			if (server != null) {
+				return server.login(client);
 			}
-
 		} catch (RemoteException e) {
 
 			e.printStackTrace();
-			return "Server not connected..";
+			return false;
 		}
-		return status;
+		return false;
+
 	}
 
 	public boolean logOut(ClientInfo client) {
