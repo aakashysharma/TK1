@@ -17,7 +17,7 @@ public class ClientInfo  implements HuntClientInterface {
 	private int xPosition;
 	private int yPostiion;
 	private ArrayList<ClientInfo> clients= null;
-	private Window gui ;
+	private Window window ;
 	
 	
 	
@@ -32,8 +32,8 @@ public class ClientInfo  implements HuntClientInterface {
 			 this.xPosition = x;
 			 this.yPostiion = y;
 			
-			    gui.updateTable(scores);
-			    gui.setFlyPosition(x, y);
+			    window.updateTable(scores);
+			    window.setFlyPosition(x, y);
 			 System.out.println("Update"+this.playerName);
 			 System.out.println("Update"+this.xPosition);
 			 System.out.println("Update"+this.yPostiion);
@@ -76,10 +76,10 @@ public class ClientInfo  implements HuntClientInterface {
 	
 	
 	public Window getGui() {
-		return gui;
+		return window;
 	}
 	public void setGui(Window gui) {
-		this.gui = gui;
+		this.window = gui;
 	}
 	@Override
 	public String toString() {

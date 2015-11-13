@@ -27,7 +27,7 @@ import impl.Controller;
 
 
 @SuppressWarnings("serial")
-public class GUI extends JFrame {
+public class ClientGUI extends JFrame {
 	JToolBar tb = null;
 	JButton btnLogin = null;
 	JButton btnLogOut = null;
@@ -36,8 +36,8 @@ public class GUI extends JFrame {
 	Controller controller = new Controller();
 	ClientInfo clientInfo = null;
 	
-	 public GUI() {
-		 System.out.println("GUI Constructor.....");
+	 public ClientGUI() {
+		 System.out.println("ClientGUI Constructor.....");
 		
 			try {
 				clientInfo = new ClientInfo();

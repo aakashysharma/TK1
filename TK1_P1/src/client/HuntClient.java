@@ -16,8 +16,8 @@ public class HuntClient {
 	 }
 
 	 private void initGUI(){
-		GUI gui= new GUI();
-		gui.setVisible(true);
+		ClientGUI clientGUI= new ClientGUI();
+		clientGUI.setVisible(true);
 	 }
 	
 	    public static void main(String[] args) {
