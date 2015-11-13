@@ -48,7 +48,7 @@
         <antcall target="build"/>
     </target>
     <target name="HuntClient">
-        <java classname="client.HuntClient" failonerror="true" fork="yes">
+        <java classname="client.Client" failonerror="true" fork="yes">
             <classpath refid="TK1_P1_Fly.classpath"/>
         </java>
     </target>

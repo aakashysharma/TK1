@@ -5,70 +5,65 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 import client.ClientInfo;
-import server.HuntServer;
+import server.HuntingServer;
 
 public class Controller {
 
-	HuntServer server = null;
+	HuntingServer server = null;
 
-	public boolean connectServer(){
-		
+	public boolean connectServer() {
+
 		try {
-		
-		    Registry registry = LocateRegistry.getRegistry(1300);
-		    server = (HuntServer) registry.lookup("HuntServer");
-		    
-		
+
+			Registry registry = LocateRegistry.getRegistry(8300);
+			server = (HuntingServer) registry.lookup("HuntingServer");
+
 		} catch (Exception e) {
-		    System.err.println("Connection Error exception: " + e.toString());
-		    e.printStackTrace();
-		    return false;
+			System.err.println("Connection Error exception: " + e.toString());
+			e.printStackTrace();
+			return false;
 		}
 		return true;
 	}
-	
+
 	public String login(ClientInfo client) {
-		String status ;
+		String status;
 		try {
 
 			if (null != server) {
 				status = server.login(client);
-				System.out.println("Login Status --"+status);
-			}else{
+				System.out.println("Login Status --" + status);
+			} else {
 				status = "Server not connected..";
 			}
-			 
-			 
-			
 
 		} catch (RemoteException e) {
-			
+
 			e.printStackTrace();
 			return "Server not connected..";
 		}
 		return status;
 	}
-	
-	public boolean logOut(ClientInfo client){
-		 try {
-				server.logout(client);
-			} catch (RemoteException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return true;
-		
+
+	public boolean logOut(ClientInfo client) {
+		try {
+			server.logout(client);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+
 	}
-	
-	public int huntFly(ClientInfo client){
-		 try {
-				server.huntFly(client);
-			} catch (RemoteException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return 1;
+
+	public int huntFly(ClientInfo client) {
+		try {
+			server.huntFly(client);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 1;
 	}
-	
-	
+
 }

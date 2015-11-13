@@ -6,88 +6,88 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
-import server.Window;
+import server.ApplicationWindow;
 
+public class ClientInfo implements HuntClientInterface {
 
-public class ClientInfo  implements HuntClientInterface {
-	
-	
 	private String playerName = "";
-	
+
 	private int xPosition;
 	private int yPostiion;
-	private ArrayList<ClientInfo> clients= null;
-	private Window window ;
-	
-	
-	
-	 public ClientInfo() throws RemoteException {
-		 
+	private ArrayList<ClientInfo> otherClients = null;
+	private ApplicationWindow clientWindow;
+
+	public ClientInfo() throws RemoteException {
+
 		super();
-		UnicastRemoteObject.exportObject (this, 0);
-		// TODO Auto-generated constructor stub
+		UnicastRemoteObject.exportObject(this, 0);
 	}
+
 	@Override
-		public void updateMe(int x,int y,Map<String,Integer> scores) throws RemoteException {
-			 this.xPosition = x;
-			 this.yPostiion = y;
-			
-			    window.updateTable(scores);
-			    window.setFlyPosition(x, y);
-			 System.out.println("Update"+this.playerName);
-			 System.out.println("Update"+this.xPosition);
-			 System.out.println("Update"+this.yPostiion);
-				
-			
-		}
-	
+	public void updateMe(int x, int y, Map<String, Integer> scores) throws RemoteException {
+		this.xPosition = x;
+		this.yPostiion = y;
+
+		clientWindow.updateTable(scores);
+		clientWindow.setFlyPosition(x, y);
+		System.out.println("Update" + this.playerName);
+		System.out.println("Update" + this.xPosition);
+		System.out.println("Update" + this.yPostiion);
+
+	}
+
 	public String getPlayerName() {
 		return playerName;
 	}
+
 	public void setPlayerName(String playerName) {
 		this.playerName = playerName;
 	}
-	
+
 	public int getxPosition() {
 		return xPosition;
 	}
+
 	public void setxPosition(int xPosition) {
 		this.xPosition = xPosition;
 	}
+
 	public int getyPostiion() {
 		return yPostiion;
 	}
+
 	public void setyPostiion(int yPostiion) {
 		this.yPostiion = yPostiion;
 	}
-	void receiveFlyHunted(String playerName, int newPoints){
-		
+
+	void receiveFlyHunted(String playerName, int newPoints) {
+
 	}
-	void receiveFlyPosition(int x, int y){
-		
+
+	void receiveFlyPosition(int x, int y) {
+
 	}
+
 	public ArrayList<ClientInfo> getClients() {
-		return clients;
+		return otherClients;
 	}
+
 	public void setClients(ArrayList<ClientInfo> clients) {
-		this.clients = clients;
+		this.otherClients = clients;
 	}
-	
-	
-	
-	public Window getGui() {
-		return window;
+
+	public ApplicationWindow getGui() {
+		return clientWindow;
 	}
-	public void setGui(Window gui) {
-		this.window = gui;
+
+	public void setGUI(ApplicationWindow gui) {
+		this.clientWindow = gui;
 	}
+
 	@Override
 	public String toString() {
-		return "ClientInfo [playerName=" + playerName 
-				 + ", xPosition=" + xPosition + ", yPostiion="
-				+ yPostiion + ", clients=" + clients + ", getPlayerName()="
-				+ ", toString()=" + super.toString() + "]";
+		return "ClientInfo [playerName=" + playerName + ", xPosition=" + xPosition + ", yPostiion=" + yPostiion
+				+ ", otherClients=" + otherClients + ", getPlayerName()=" + ", toString()=" + super.toString() + "]";
 	}
-	
-	
+
 }
