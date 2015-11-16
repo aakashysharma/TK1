@@ -3,7 +3,6 @@ package client;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Map;
 
 import server.ApplicationWindow;
@@ -36,6 +35,7 @@ public class ClientInfo implements HuntingClient {
 
 	}
 
+	@Override
 	public String getPlayerName() {
 		return playerName;
 	}
@@ -84,10 +84,12 @@ public class ClientInfo implements HuntingClient {
 		this.clientWindow = gui;
 	}
 
-	@Override
-	public String toString() {
-		return "ClientInfo [playerName=" + playerName + ", xPosition=" + xPosition + ", yPostiion=" + yPostiion
-				+ ", otherClients=" + otherClients + ", getPlayerName()=" + ", toString()=" + super.toString() + "]";
-	}
+	// @Override
+	// public String toString() {
+	// return "ClientInfo [playerName=" + playerName + ", xPosition=" +
+	// xPosition + ", yPostiion=" + yPostiion
+	// + ", otherClients=" + otherClients + ", getPlayerName()=" + ",
+	// toString()=" + super.toString() + "]";
+	// }
 
 }

@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class ServerGUI extends JFrame {
 
@@ -19,6 +21,17 @@ public class ServerGUI extends JFrame {
 
 	public ServerGUI() throws HeadlessException {
 		super();
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (InstantiationException e1) {
+			e1.printStackTrace();
+		} catch (IllegalAccessException e1) {
+			e1.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e1) {
+			e1.printStackTrace();
+		}
 		this.setResizable(false);
 		this.btnStart = new JButton("Run Server");
 		this.btnShutdown = new JButton("Shut Down Server");
@@ -36,6 +49,7 @@ public class ServerGUI extends JFrame {
 		this.add(panel);
 		startServer();
 		btnStart.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				startServer();
@@ -43,6 +57,7 @@ public class ServerGUI extends JFrame {
 		});
 
 		btnShutdown.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				stopServer();
@@ -65,8 +80,9 @@ public class ServerGUI extends JFrame {
 			server = null;
 			btnStart.setEnabled(true);
 			btnShutdown.setEnabled(false);
-		} else
+		} else {
 			JOptionPane.showMessageDialog(null, "Please start server first!", null, JOptionPane.INFORMATION_MESSAGE);
+		}
 
 	}
 

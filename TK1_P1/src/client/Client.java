@@ -9,25 +9,25 @@ import server.ApplicationWindow;
 public class Client {
 
 	public Client() {
-		System.out.println("New Client....");
-		initGUI();
+
+		init();
 	}
 
-	private void initGUI() {
+	private void init() {
 		ClientGUI clientGUI = new ClientGUI();
 		clientGUI.setVisible(true);
 	}
 
 	public static void main(String[] args) {
 		ApplicationWindow clientWindow = new ApplicationWindow();
-		JFrame mainFrame = new JFrame();
-
-		mainFrame.setResizable(false);
-		mainFrame.setLayout(new BorderLayout());
-		mainFrame.add(clientWindow, BorderLayout.CENTER);
-		mainFrame.pack();
-		mainFrame.setVisible(true);
-
+		JFrame frame = new JFrame();
+		frame.setTitle("Welcome to fly hunter game");
+		frame.setResizable(false);
+		frame.setLayout(new BorderLayout());
+		frame.add(clientWindow, BorderLayout.CENTER);
+		frame.pack();
+		frame.setVisible(true);
+		frame.requestFocus();
+		frame.setLocationRelativeTo(null);
 	}
-
 }

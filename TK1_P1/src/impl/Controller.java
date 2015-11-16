@@ -10,12 +10,12 @@ import server.HuntingServer;
 public class Controller {
 
 	HuntingServer server = null;
+	private final int PORT_NUMBER = 8300;
 
 	public boolean connectServer() {
 
 		try {
-
-			Registry registry = LocateRegistry.getRegistry(8300);
+			Registry registry = LocateRegistry.getRegistry(PORT_NUMBER);
 			server = (HuntingServer) registry.lookup("HuntingServer");
 
 		} catch (Exception e) {
@@ -33,7 +33,6 @@ public class Controller {
 				return server.login(client);
 			}
 		} catch (RemoteException e) {
-
 			e.printStackTrace();
 			return false;
 		}
@@ -45,21 +44,17 @@ public class Controller {
 		try {
 			server.logout(client);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return true;
-
 	}
 
 	public int huntFly(ClientInfo client) {
 		try {
 			server.huntFly(client);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return 1;
 	}
-
 }

@@ -55,7 +55,7 @@ public class HuntServerImpl extends UnicastRemoteObject implements HuntingServer
 	public void logout(HuntingClient client) throws RemoteException {
 
 		scoreMap.remove(client.getPlayerName());
-		System.out.println("index of client -- " + clients.indexOf(client));
+		// System.out.println("index of client -- " + clients.indexOf(client));
 		clients.remove(client);
 		updateClients();
 

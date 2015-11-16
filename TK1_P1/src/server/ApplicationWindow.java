@@ -35,9 +35,7 @@ public class ApplicationWindow extends javax.swing.JPanel {
 	 */
 	public ApplicationWindow() {
 		initComponents();
-
 		controller.connectServer();
-		System.out.println("Connection established ....");
 		try {
 			clientInfo = new ClientInfo();
 			clientInfo.setGUI(this);
