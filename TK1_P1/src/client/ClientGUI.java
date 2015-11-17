@@ -62,27 +62,6 @@ public class ClientGUI extends JFrame {
 		setLocation(100, 200);
 		setResizable(false);
 		setBackground(Color.GRAY);
-		// JMenuBar menubar = new JMenuBar();
-		// ImageIcon quitIcon = new
-		// ImageIcon(getClass().getResource("resources/quit.png"));
-		//
-		// JMenu fileMenu = new JMenu("File");
-		// fileMenu.setMnemonic(KeyEvent.VK_F);
-		//
-		// JMenuItem quitMenu = new JMenuItem("Quit", quitIcon);
-		// quitMenu.setMnemonic(KeyEvent.VK_E);
-		// quitMenu.setToolTipText("Quit fly hunting game!");
-		// quitMenu.addActionListener(new ActionListener() {
-		// @Override
-		// public void actionPerformed(ActionEvent event) {
-		// System.exit(0);
-		// }
-		// });
-
-		// fileMenu.add(quitMenu);
-		// menubar.add(fileMenu);
-		// setJMenuBar(menubar);
-		// serverUpAndRunning = controller.connectServer();
 		initLoginComponent();
 	}
 
@@ -106,13 +85,6 @@ public class ClientGUI extends JFrame {
 				login();
 			}
 		});
-		// JToolBar vertical = new JToolBar(JToolBar.VERTICAL);
-		// vertical.setFloatable(false);
-		// vertical.setMargin(new Insets(10, 5, 5, 5));
-		// JButton selectb = new JButton("Faisal");
-		// selectb.setBorder(new EmptyBorder(3, 0, 3, 0));
-		// vertical.add(selectb);
-		// add(vertical, BorderLayout.WEST);
 		add(panel);
 	}
 
@@ -120,9 +92,9 @@ public class ClientGUI extends JFrame {
 
 		btnLogOut = new JButton("Logout");
 		this.clientInfo.setPlayerName(textField.getText());
-		if (!serverUpAndRunning) {
-			serverUpAndRunning = controller.connectServer();
-		}
+		// if (!serverUpAndRunning) {
+		// serverUpAndRunning = controller.connectServer();
+		// }
 		if (controller.login(this.clientInfo)) {
 			textField.setVisible(false);
 			btnLogin.setVisible(false);
@@ -137,6 +109,7 @@ public class ClientGUI extends JFrame {
 					logOut();
 				}
 			});
+			add(toolbar);
 		}
 		return true;
 	}

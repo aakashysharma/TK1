@@ -27,11 +27,8 @@ public class ClientInfo implements HuntingClient {
 		this.xPosition = x;
 		this.yPostiion = y;
 
-		clientWindow.updateTable(scores);
+		clientWindow.updateScoresTable(scores);
 		clientWindow.setFlyPosition(x, y);
-		System.out.println("Update" + this.playerName);
-		System.out.println("Update" + this.xPosition);
-		System.out.println("Update" + this.yPostiion);
 
 	}
 
@@ -84,12 +81,10 @@ public class ClientInfo implements HuntingClient {
 		this.clientWindow = gui;
 	}
 
-	// @Override
-	// public String toString() {
-	// return "ClientInfo [playerName=" + playerName + ", xPosition=" +
-	// xPosition + ", yPostiion=" + yPostiion
-	// + ", otherClients=" + otherClients + ", getPlayerName()=" + ",
-	// toString()=" + super.toString() + "]";
-	// }
+	@Override
+	public String toString() {
+
+		return this.playerName;
+	}
 
 }

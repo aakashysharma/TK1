@@ -31,10 +31,10 @@ public class HuntServerImpl extends UnicastRemoteObject implements HuntingServer
 	@Override
 	public boolean login(HuntingClient client) throws RemoteException {
 
-		System.out.println("Login Request...." + client);
+		System.out.println("Login Request from " + client);
 
-		if (null != scoreMap.get(client.getPlayerName())) {
-			System.out.println("Username already exists on server");
+		if (scoreMap.get(client.getPlayerName()) != null) {
+			System.err.println("Username already exists on server! Try a different username.");
 			return false;
 		}
 
@@ -55,7 +55,6 @@ public class HuntServerImpl extends UnicastRemoteObject implements HuntingServer
 	public void logout(HuntingClient client) throws RemoteException {
 
 		scoreMap.remove(client.getPlayerName());
-		// System.out.println("index of client -- " + clients.indexOf(client));
 		clients.remove(client);
 		updateClients();
 
@@ -90,7 +89,6 @@ public class HuntServerImpl extends UnicastRemoteObject implements HuntingServer
 
 				client.updateMe(x, y, this.scoreMap);
 			} catch (Exception e) {
-
 				System.out.println("Could not update client " + client.toString());
 			}
 		}

@@ -10,12 +10,19 @@ import server.HuntingServer;
 public class Controller {
 
 	HuntingServer server = null;
-	private final int PORT_NUMBER = 8300;
+	static final int PORT_NUMBER = 15300;
+
+	/**
+	 * @return the portNumber
+	 */
+	public static final int getPortNumber() {
+		return PORT_NUMBER;
+	}
 
 	public boolean connectServer() {
 
 		try {
-			Registry registry = LocateRegistry.getRegistry(PORT_NUMBER);
+			Registry registry = LocateRegistry.getRegistry(Controller.getPortNumber());
 			server = (HuntingServer) registry.lookup("HuntingServer");
 
 		} catch (Exception e) {
