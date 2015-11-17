@@ -49,4 +49,20 @@
             <classpath refid="TK1_P1_Fly.classpath"/>
         </java>
     </target>
+    
+    <target name="run" depends="build-project">    
+    <parallel>    
+    <java classname="server.Server" failonerror="true" fork="yes">
+            <classpath refid="TK1_P1_Fly.classpath"/>
+        </java>
+        
+    <java classname="client.Client" failonerror="true" fork="yes">
+            <classpath refid="TK1_P1_Fly.classpath"/>
+        </java>
+        
+        <java classname="client.Client" failonerror="true" fork="yes">
+            <classpath refid="TK1_P1_Fly.classpath"/>
+        </java>     
+    </parallel>
+    </target>
 </project>
