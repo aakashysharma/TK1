@@ -1,6 +1,7 @@
 package server;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -69,27 +70,50 @@ public class ServerGUI extends JFrame {
 	private void startServer() {
 		server = new Server();
 		// server.start();
+		this.setTitle("Fly Hunter Game Server: Started");
 		btnStart.setEnabled(false);
 		btnShutdown.setEnabled(true);
 
 	}
 
 	private void stopServer() {
-		if (null != server) {
+		if (server != null) {
 			// server.stopServer();
 			server = null;
+			this.setTitle("Fly Hunter Game Server: Stopped");
 			btnStart.setEnabled(true);
 			btnShutdown.setEnabled(false);
 		} else {
-			JOptionPane.showMessageDialog(null, "Please start server first!", null, JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Please start Fly Hunter game server first!", null,
+					JOptionPane.INFORMATION_MESSAGE);
 		}
 
 	}
 
 	public static void main(String[] args) {
 		ServerGUI serverGUI = new ServerGUI();
+		try {
+			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		serverGUI.setTitle("Fly Hunter Game Server: Started");
+		serverGUI.setResizable(false);
+		serverGUI.setBackground(Color.GRAY);
 		serverGUI.setSize(250, 70);
 		serverGUI.setVisible(true);
+		serverGUI.setLocationRelativeTo(null);
+
 	}
 
 }

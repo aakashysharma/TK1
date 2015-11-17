@@ -22,10 +22,10 @@ public class Client {
 		ApplicationWindow clientWindow = new ApplicationWindow();
 		JFrame frame = new JFrame();
 		frame.setTitle("Welcome to fly hunter game");
-		frame.setResizable(false);
 		frame.setLayout(new BorderLayout());
 		frame.add(clientWindow, BorderLayout.CENTER);
 		frame.pack();
+		frame.setResizable(false);
 		frame.setVisible(true);
 		frame.requestFocus();
 		frame.setLocationRelativeTo(null);
