@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/ProductDetails" xmlns:tns="http://www.example.org/ProductDetails" elementFormDefault="qualified">
+
+    <complexType name="Product">
+    	<sequence>
+    		<element name="entry" type="tns:ProductEntry" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="ProductEntry">
+    	<sequence>
+    		<element name="ID" type="string"></element>
+    		<element name="Name" type="string"></element>
+    		<element name="Price" type="float"></element>
+    		<element name="Available" type="boolean"></element>
+    	</sequence>
+    </complexType>
+</schema>
