@@ -12,7 +12,7 @@
     		<element name="ID" type="string"></element>
     		<element name="Name" type="string"></element>
     		<element name="Price" type="float"></element>
-    		<element name="Available" type="boolean"></element>
+    		<element name="AvailableQuantity" type="float"></element>
     	</sequence>
     </complexType>
 </schema>
